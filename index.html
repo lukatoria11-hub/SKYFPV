@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FPVGE — FPV Store Georgia</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:#06080b;color:#f4f7fb}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 80% 10%,rgba(0,229,255,.12),transparent 28%),radial-gradient(circle at 10% 45%,rgba(123,92,255,.10),transparent 25%);z-index:-1}
+header{position:sticky;top:0;z-index:10;background:rgba(6,8,11,.82);backdrop-filter:blur(18px);border-bottom:1px solid #1c232c}
+.nav{max-width:1180px;margin:auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:800;letter-spacing:-1px}.logo b{color:#00e5ff}
+nav{display:flex;gap:28px}nav a{color:#aeb7c3;text-decoration:none;font-size:14px}nav a:hover{color:#fff}
+.cart{border:1px solid #27313c;border-radius:10px;padding:9px 13px;color:#fff;text-decoration:none;font-size:13px}
+.hero{max-width:1180px;margin:auto;padding:95px 24px 80px;display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center}
+.badge{display:inline-flex;border:1px solid #26333c;background:#0c1318;padding:8px 12px;border-radius:999px;color:#8eefff;font-size:12px;margin-bottom:20px}
+.hero h1{font-size:clamp(42px,6vw,76px);line-height:.98;letter-spacing:-4px;max-width:760px}
+.hero h1 span{color:#00e5ff}
+.hero p{color:#8e98a6;line-height:1.7;max-width:600px;margin:25px 0 30px}
+.btn{display:inline-block;background:#00e5ff;color:#031014;padding:14px 20px;border-radius:11px;text-decoration:none;font-weight:800;border:0;cursor:pointer}
+.btn.dark{background:#111820;color:#fff;border:1px solid #27313c;margin-left:8px}
+.drone{height:360px;border:1px solid #27313c;border-radius:28px;background:linear-gradient(145deg,#111922,#080b0e);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 0 80px rgba(0,229,255,.08)}
+.drone:after{content:"FPV";position:absolute;font-size:150px;font-weight:800;color:rgba(255,255,255,.025);transform:rotate(-15deg)}
+.drone .quad{font-size:125px;filter:drop-shadow(0 0 22px rgba(0,229,255,.45));z-index:1}
+section{max-width:1180px;margin:auto;padding:55px 24px}
+.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:24px}.head h2{font-size:32px}.head p{color:#737e8b;font-size:13px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:linear-gradient(145deg,#10151b,#0b0e12);border:1px solid #202933;border-radius:20px;padding:14px;transition:.25s}
+.card:hover{transform:translateY(-5px);border-color:#00b9d0;box-shadow:0 15px 45px rgba(0,229,255,.08)}
+.photo{height:205px;border-radius:15px;background:radial-gradient(circle at 50% 45%,#1e3038,#0a0e12 65%);display:flex;align-items:center;justify-content:center;font-size:82px;margin-bottom:17px}
+.card small{color:#6f7b88}.card h3{margin:7px 0;font-size:18px}.desc{font-size:13px;color:#8c96a2;line-height:1.5}
+.bottom{display:flex;justify-content:space-between;align-items:center;margin-top:18px}.price{font-size:21px;font-weight:800;color:#00e5ff}
+.buy{padding:10px 13px;border-radius:9px;background:#fff;color:#05070a;border:0;font-weight:700;cursor:pointer}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{border:1px solid #202933;border-radius:17px;padding:24px;background:#0b0f13}.feature strong{display:block;margin:12px 0 7px}.feature p{font-size:13px;color:#7e8996;line-height:1.6}
+.contact{background:linear-gradient(135deg,#0e171d,#080b0e);border:1px solid #202933;border-radius:25px;text-align:center;padding:55px 20px}.contact h2{font-size:35px}.contact p{color:#87919d;margin:12px auto 24px}
+footer{margin-top:60px;border-top:1px solid #1b222a;padding:30px 24px;color:#68727e;text-align:center;font-size:12px}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:60px}.drone{height:260px}.products,.features{grid-template-columns:1fr}nav{display:none}.hero h1{letter-spacing:-2px}.btn.dark{margin-left:0;margin-top:10px}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+<div class="logo">FPV<b>GE</b></div>
+<nav><a href="#shop">მაღაზია</a><a href="#why">რატომ ჩვენ?</a><a href="#contact">კონტაქტი</a></nav>
+<button class="cart" onclick="openCart()">🛒 კალათა <span id="count">0</span></button>
+</div></header>
+
+<main>
+<section class="hero">
+<div>
+<div class="badge">⚡ FPV STORE • GEORGIA</div>
+<h1>FLY <span>FASTER.</span><br>FLY DIFFERENT.</h1>
+<p>აწყობილი FPV დრონები და კომპონენტები მათთვის, ვისაც ჩვეულებრივი დრონი არ ჰყოფნის.</p>
+<a class="btn" href="#shop">პროდუქტების ნახვა</a>
+<a class="btn dark" href="#contact">დაგვიკავშირდი</a>
+</div>
+<div class="drone"><div class="quad">🛸</div></div>
+</section>
+
+<section id="shop">
+<div class="head"><div><h2>რჩეული პროდუქტები</h2><p>შეარჩიე შენი setup</p></div></div>
+<div class="products">
+<div class="card"><div class="photo">🛩️</div><small>5" • ANALOG • ELRS</small><h3>FPV Freestyle 5"</h3><div class="desc">6S setup • 2207 motors • F405 stack • ELRS receiver</div><div class="bottom"><div class="price">750 ₾</div><button class="buy" onclick="add('FPV Freestyle 5&quot;')">კალათაში</button></div></div>
+<div class="card"><div class="photo">🎮</div><small>ELRS • 2.4GHz</small><h3>RadioMaster Pocket</h3><div class="desc">კომპაქტური და მოსახერხებელი FPV პულტი.</div><div class="bottom"><div class="price">250 ₾</div><button class="buy" onclick="add('RadioMaster Pocket')">კალათაში</button></div></div>
+<div class="card"><div class="photo">🔋</div><small>6S • 1300mAh</small><h3>LiPo Battery</h3><div class="desc">5" FPV build-ებისთვის განკუთვნილი ბატარეა.</div><div class="bottom"><div class="price">65 ₾</div><button class="buy" onclick="add('6S LiPo Battery')">კალათაში</button></div></div>
+</div>
+</section>
+
+<section id="why"><div class="head"><div><h2>რატომ FPVGE?</h2><p>მარტივი არჩევანი დამწყებისთვისაც</p></div></div>
+<div class="features">
+<div class="feature"><div>🛠️</div><strong>აწყობილი setup-ები</strong><p>კომპონენტები შერჩეულია ისე, რომ ერთმანეთთან თავსებადობა გათვალისწინებული იყოს.</p></div>
+<div class="feature"><div>⚡</div><strong>FPV გამოცდილება</strong><p>ფოკუსი მხოლოდ FPV-ზე — დრონები, ნაწილები და აქსესუარები.</p></div>
+<div class="feature"><div>🇬🇪</div><strong>საქართველო</strong><p>ადგილობრივ მყიდველებზე მორგებული მაღაზიის კონცეფცია.</p></div>
+</div></section>
+
+<section id="contact"><div class="contact"><h2>გინდა შენი FPV?</h2><p>მოგვწერე და დაგეხმარებით setup-ის არჩევაში.</p><a class="btn" href="https://instagram.com/" target="_blank">Instagram-ზე მოგვწერე</a></div></section>
+</main>
+<footer>© 2026 FPVGE — FPV Store Georgia</footer>
+
+<div id="cartModal" class="modal" onclick="closeCart(event)">
+  <div class="cartbox" onclick="event.stopPropagation()">
+    <div class="carthead">
+      <h2>🛒 შენი კალათა</h2>
+      <button class="close" onclick="closeCart()">✕</button>
+    </div>
+    <div id="cartItems"></div>
+    <div class="carttotal"><span>ჯამი</span><strong id="total">0 ₾</strong></div>
+    <button class="checkout" onclick="checkout()">შეკვეთის გაგრძელება</button>
+  </div>
+</div>
+
+<style>
+.cart{background:transparent;border:1px solid #27313c;cursor:pointer}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);z-index:100;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.cartbox{width:min(520px,100%);max-height:80vh;overflow:auto;background:#0d1217;border:1px solid #29343e;border-radius:20px;padding:22px;box-shadow:0 25px 80px rgba(0,0,0,.6)}
+.carthead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.carthead h2{font-size:24px}
+.close{background:#171e25;border:1px solid #2b3640;color:#fff;border-radius:9px;padding:8px 11px;cursor:pointer}
+.cartitem{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid #202932}
+.cartitem .info{flex:1}.cartitem small{display:block;color:#778391;margin-top:4px}
+.remove{background:#2a1518;color:#ff8e98;border:1px solid #492329;border-radius:8px;padding:7px 10px;cursor:pointer}
+.carttotal{display:flex;justify-content:space-between;margin:20px 0;font-size:18px}
+.carttotal strong{color:#00e5ff}
+.checkout{width:100%;padding:13px;border:0;border-radius:10px;background:#00e5ff;color:#031014;font-weight:800;cursor:pointer}
+.empty{text-align:center;color:#7d8894;padding:30px 5px}
+</style>
+
+<script>
+let cart = [];
+
+function add(name){
+  const products = {
+    'FPV Freestyle 5"': 750,
+    'RadioMaster Pocket': 250,
+    '6S LiPo Battery': 65
+  };
+  cart.push({name:name, price:products[name] || 0});
+  updateCart();
+  openCart();
+}
+
+function updateCart(){
+  document.getElementById('count').textContent = cart.length;
+  const box = document.getElementById('cartItems');
+  const total = cart.reduce((sum,item)=>sum+item.price,0);
+  document.getElementById('total').textContent = total + ' ₾';
+
+  if(!cart.length){
+    box.innerHTML = '<div class="empty">კალათა ცარიელია.</div>';
+    return;
+  }
+
+  box.innerHTML = cart.map((item,i)=>`
+    <div class="cartitem">
+      <div class="info"><strong>${item.name}</strong><small>${item.price} ₾</small></div>
+      <button class="remove" onclick="removeItem(${i})">წაშლა</button>
+    </div>
+  `).join('');
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  updateCart();
+}
+
+function openCart(){
+  document.getElementById('cartModal').classList.add('show');
+  updateCart();
+}
+
+function closeCart(event){
+  if(!event || event.target.id === 'cartModal'){
+    document.getElementById('cartModal').classList.remove('show');
+  }
+}
+
+function checkout(){
+  if(!cart.length){ alert('კალათა ცარიელია.'); return; }
+  alert('შეკვეთის ფუნქცია შემდეგ ეტაპზე დავამატოთ — მაგალითად WhatsApp/Instagram/ტელეფონით.');
+}
+updateCart();
+</script>
+</body>
+</html>
